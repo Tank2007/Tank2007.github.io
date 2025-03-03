@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #333;
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+        }
+        .welcome-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: lightblue;
+            text-align: center;
+        }
+        .projects {
+            padding: 50px;
+            text-align: center;
+        }
+        .project-tile {
+            margin: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            display: inline-block;
+        }
+        .social-media {
+            text-align: center;
+            padding: 20px;
+            background: #eee;
+        }
+        .social-media a {
+            margin: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#welcome-section">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#social-media">Contact</a>
+    </div>
+    
+    <div id="welcome-section" class="welcome-section">
+        <h1>Hi, I'm [Your Name], a Future Developer!</h1>
+    </div>
+    
+    <div id="projects" class="projects">
+        <h2>Projects</h2>
+        <div class="project-tile">
+            <a href="#">Project 1</a>
+        </div>
+    </div>
+    
+    <div id="social-media" class="social-media">
+        <h2>Find me online</h2>
+        <a href="https://github.com" target="_blank">GitHub</a>
+        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+        <a href="https://www.codewars.com" target="_blank">CodeWars</a>
+    </div>
+</body>
+</html>
