@@ -3,241 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WW2 Timeline - USA & Germany</title>
+    <title>Checks and Balances Poster</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
             margin: 0;
             padding: 20px;
-            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .poster {
+            background-color: white;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-        
         h1 {
             text-align: center;
-            color: #333;
+            color: #007bff;
         }
-        
-        .timeline-section {
-            margin: 40px 0;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .timeline-section h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-        }
-        
-        .event {
+        .branches {
             display: flex;
-            margin: 20px 0;
-            padding: 15px;
-            border-left: 4px solid #3498db;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+        .branch {
+            text-align: center;
+            width: 30%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
             background-color: #f9f9f9;
         }
-        
-        .event img {
-            width: 150px;
-            height: 100px;
-            object-fit: cover;
-            margin-right: 20px;
+        .branch h2 {
+            color: #dc3545;
         }
-        
-        .event-content {
-            flex: 1;
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
         }
-        
-        .date {
-            font-weight: bold;
-            color: #e74c3c;
-            margin-bottom: 5px;
-        }
-        
-        .description {
-            color: #666;
+        .explanation {
+            margin-top: 20px;
+            font-size: 16px;
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>World War II Timeline</h1>
+    <div class="poster">
+        <h1>Checks and Balances in the US Government</h1>
         
-        <!-- USA Timeline -->
-        <div class="timeline-section">
-            <h2>United States (Allied Powers)</h2>
-            
-            <div class="event">
-                <img src="images/USA.png" alt="Usa is neutral">
-                <div class="event-content">
-                    <div class="date">September 1, 1939</div>
-                    <div class="description">Germany invades Poland; US remains neutral but begins preparing</div>
-                </div>
+        <div class="branches">
+            <div class="branch">
+                <h2>Legislative Branch</h2>
+                <p>Congress (House & Senate) - Makes Laws</p>
+                <ul>
+                    <li>Checks Executive: Can override presidential veto with 2/3 vote; impeach and remove president; approve appointments and treaties. Why: To prevent executive overreach and ensure laws align with public will.</li>
+                    <li>Checks Judicial: Can impeach judges; propose constitutional amendments. Why: To maintain accountability and adapt the Constitution as needed.</li>
+                </ul>
             </div>
-            
-            <div class="event">
-                <img src="images/pearl_Harbor.png" alt="this is a picture of pearl Harbor">
-                <div class="event-content">
-                    <div class="date">December 7, 1941</div>
-                    <div class="description">Japan attacks Pearl Harbor, prompting US entry into WW2</div>
-                </div>
+            <div class="branch">
+                <h2>Executive Branch</h2>
+                <p>President & Agencies - Enforces Laws</p>
+                <ul>
+                    <li>Checks Legislative: Can veto bills passed by Congress. Why: To block potentially harmful or unconstitutional legislation.</li>
+                    <li>Checks Judicial: Appoints federal judges, including Supreme Court justices. Why: To influence the judiciary's composition over time.</li>
+                </ul>
             </div>
-            
-            <div class="event">
-                <img src="images/D-Day.png" alt="this is a picture of Normandy">
-                <div class="event-content">
-                    <div class="date">June 6, 1944</div>
-                    <div class="description">D-Day: Allied invasion of Normandy begins</div>
-                </div>
-            </div>
-            
-            <div class="event">
-                <img src="images/Iwo_Jima.png" alt="this is a picture of iwo Jima">
-                <div class="event-content">
-                    <div class="date">February 19, 1945</div>
-                    <div class="description">Battle of Iwo Jima begins Funt fact when the Americans put the flag on the hill for the frist time in history on Japanese land the Japanese fought harder to win the war.</div>
-                </div>
-            </div>
-            
-            <div class="event">
-                <img src="images/Okinawa.png" alt=" this is a picture of the battle of Okinawa">
-                <div class="event-content">
-                    <div class="date">April 1, 1945</div>
-                    <div class="description">Battle of Okinawa begins</div>
-                </div>
-            </div>
-            
-            <div class="event">
-                <img src="images/Germany_Surrenders.jpg" alt="Event 6">
-                <div class="event-content">
-                    <div class="date">May 8, 1945</div>
-                    <div class="description">VE Day: Germany surrenders to Allies</div>
-                </div>
-            </div>
-            
-            <div class="event">
-                <img src="images/Battle_of_midway.png" alt="Event 7">
-                <div class="event-content">
-                    <div class="date">June 4, 1942</div>
-                    <div class="description">Battle of midway the turing point of the war for USA</div>
-                </div>
-            </div>
-            
-            <div class="event">
-                <img src="images/Nagasaki.png" alt="Event 8">
-                <div class="event-content">
-                    <div class="date">August 6, 1945 and August 9, 1945</div>
-                    <div class="description">Both atomic bombs were dropped on Hiroshima and Nagasaki</div>
-                </div>
-            </div>
-            
-            <div class="event">
-                <img src="images/Japan_surrenders.png" alt="Event 9">
-                <div class="event-content">
-                    <div class="date">August 15, 1945</div>
-                    <div class="description">Japan announces surrender</div>
-                </div>
-            </div>
-            
-            <div class="event">
-                <img src="images/Japan.png" alt="Event 10">
-                <div class="event-content">
-                    <div class="date">September 2, 1945</div>
-                    <div class="description">Formal Japanese surrender aboard USS Missouri</div>
-                </div>
+            <div class="branch">
+                <h2>Judicial Branch</h2>
+                <p>Supreme Court & Courts - Interprets Laws</p>
+                <ul>
+                    <li>Checks Legislative: Can declare laws unconstitutional via judicial review. Why: To ensure laws comply with the Constitution.</li>
+                    <li>Checks Executive: Can rule executive actions unconstitutional. Why: To prevent abuse of power by the president or agencies.</li>
+                </ul>
             </div>
         </div>
         
-        <!-- Germany Timeline -->
-        <div class="timeline-section">
-            <h2>Germany (Axis Powers)</h2>
-            
-            <div class="event">
-                <img src="images/Invasion_of_poland.png" alt="Event 1">
-                <div class="event-content">
-                    <div class="date">September 1, 1939</div>
-                    <div class="description">Germany invades Poland, starting World War II</div>
-                </div>
-            </div>
-            
-            <div class="event">
-                <img src="images/Denmark_norway.png" alt="Event 2">
-                <div class="event-content">
-                    <div class="date">April 9, 1940</div>
-                    <div class="description">Germany invades Denmark and Norway</div>
-                </div>
-            </div>
-            
-            <div class="event">
-                <img src="images/Western_Europe.png" alt="Event 3">
-                <div class="event-content">
-                    <div class="date">May 10, 1940</div>
-                    <div class="description">Germany begins invasion of Western Europe</div>
-                </div>
-            </div>
-            
-            <div class="event">
-                <img src="images/Battle_of_Britain.jpg" alt="Event 4">
-                <div class="event-content">
-                    <div class="date">July 10, 1940</div>
-                    <div class="description">Battle of Britain begins</div>
-                </div>
-            </div>
-            
-            <div class="event">
-                <img src="images/Operation_barbarossa.png" alt="Event 5">
-                <div class="event-content">
-                    <div class="date">June 22, 1941</div>
-                    <div class="description">Operation Barbarossa: Germany invades Soviet Union</div>
-                </div>
-            </div>
-            
-            <div class="event">
-                <img src="images/Germany_Declares_war_on_US.jpg" alt="Event 6">
-                <div class="event-content">
-                    <div class="date">December 11, 1941</div>
-                    <div class="description">Germany declares war on United States</div>
-                </div>
-            </div>
-            
-            <div class="event">
-                <img src="images/Stalingrad.png" alt="Event 7">
-                <div class="event-content">
-                    <div class="date">August 23, 1942</div>
-                    <div class="description">Battle of Stalingrad begins</div>
-                </div>
-            </div>
-            
-            <div class="event">
-                <img src="images/German_troops_surrender.jpg" alt="Event 8">
-                <div class="event-content">
-                    <div class="date">February 2, 1943</div>
-                    <div class="description">German surrender at Stalingrad</div>
-                </div>
-            </div>
-            
-            <div class="event">
-                <img src="images/Hitler_dies.png" alt="Event 9">
-                <div class="event-content">
-                    <div class="date">April 30, 1945</div>
-                    <div class="description">Hitler commits suicide in Berlin bunker</div>
-                </div>
-            </div>
-            
-            <div class="event">
-                <img src="images/Germany_Surrenders.jpg" alt="Event 10">
-                <div class="event-content">
-                    <div class="date">May 7, 1945</div>
-                    <div class="description">Germany signs unconditional surrender</div>
-                </div>
-            </div>
+        <div class="explanation">
+            <p>Checks and balances are a fundamental principle in the US Constitution designed to prevent any one branch of government from becoming too powerful. Each branch has specific powers that allow it to limit the actions of the others, ensuring a balance of authority. For example, in a real scenario like the Watergate scandal, Congress impeached President Nixon, demonstrating legislative checks on executive misconduct. In a fictional case, if a president tried to unilaterally declare war, Congress could withhold funding, illustrating the system's safeguards. This framework promotes accountability, protects individual rights, and maintains democratic governance.</p>
         </div>
     </div>
 </body>
