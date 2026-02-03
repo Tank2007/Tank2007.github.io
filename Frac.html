@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraction Calculator & Simplifier</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 420px; margin: 20px auto; }
+        input, select, button { margin: 8px 4px; padding: 8px; font-size: 1em; }
+        #frac2-container { display: none; } /* hidden by default in simplify mode */
+        #operation-container { display: none; }
+        #result { margin-top: 20px; font-size: 1.4em; font-weight: bold; color: #333; }
+        label { margin-right: 12px; }
+    </style>
+</head>
+<body>
+    <h1>Fraction Calculator & Simplifier</h1>
+    <p>Enter fractions like <code>1/2</code>, <code>-3/4</code>, or <code>8/12</code>.</p>
+
+    <div>
+        <label><input type="radio" name="mode" value="calculate" checked onclick="toggleMode()"> Calculate</label>
+        <label><input type="radio" name="mode" value="simplify" onclick="toggleMode()"> Simplify Only</label>
+    </div>
+
+    <input type="text" id="frac1" placeholder="Fraction 1 (e.g. -6/14)" required>
+    
+    <div id="operation-container">
+        <select id="operation">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">×</option>
+            <option value="/">÷</option>
+        </select>
+    </div>
+
+    <div id="frac2-container">
+        <input type="text" id="frac2" placeholder="Fraction 2 (e.g. 3/4)">
+    </div>
+
+    <br>
+    <button onclick="calculate()">Go</button>
+
+    <div id="result"></div>
+
+    <script>
+        // Show/hide fields based on mode
+        function toggleMode() {
+            const mode = document.querySelector('input[name="mode"]:checked').value;
+            const opContainer = document.getElementById('operation-container');
+            const frac2Container = document.getElementById('frac2-container');
+            const frac2Input = document.getElementById('frac2');
+
+            if (mode === 'simplify') {
+                opContainer.style.display = 'none';
+                frac2Container.style.display = 'none';
+                frac2Input.removeAttribute('required');
+            } else {
+                opContainer.style.display = 'inline-block';
+                frac2Container.style.display = 'inline-block';
+                frac2Input.setAttribute('required', 'required');
+            }
+        }
+
+        // GCD helper
+        function gcd(a, b) {
+            a = Math.abs(a);
+            b = Math.abs(b);
+            while (b !== 0) {
+                let temp = b;
+                b = a % b;
+                a = temp;
+            }
+            return a;
+        }
+
+        // Simplify: sign always on numerator, denominator positive
+        function simplify(num, den) {
+            if (den === 0) throw new Error("Denominator cannot be zero");
+            if (num === 0) return [0, 1];
+
+            const g = gcd(num, den);
+            num = Math.trunc(num / g);
+            den = Math.trunc(den / g);
+
+            if (den < 0) {
+                num = -num;
+                den = -den;
+            }
+
+            return [num, den];
+        }
+
+        // Parse "3/4" → [3, 4] or "-6/14" → [-6, 14]
+        function parseFraction(str) {
+            const parts = str.trim().split('/');
+            if (parts.length !== 2) throw new Error("Use format: numerator/denominator");
+            const num = parseInt(parts[0], 10);
+            const den = parseInt(parts[1], 10);
+            if (isNaN(num) || isNaN(den) || den === 0) {
+                throw new Error("Invalid number or zero denominator");
+            }
+            return [num, den];
+        }
+
+        // Main function
+        function calculate() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = "";
+
+            try {
+                const mode = document.querySelector('input[name="mode"]:checked').value;
+                const frac1Str = document.getElementById('frac1').value.trim();
+
+                if (!frac1Str) throw new Error("Enter at least the first fraction");
+
+                const [n1, d1] = parseFraction(frac1Str);
+
+                let display = "";
+
+                if (mode === 'simplify') {
+                    const [num, den] = simplify(n1, d1);
+                    display = formatFraction(num, den);
+                } else {
+                    const op = document.getElementById('operation').value;
+                    const frac2Str = document.getElementById('frac2').value.trim();
+                    if (!frac2Str) throw new Error("Enter the second fraction");
+
+                    const [n2, d2] = parseFraction(frac2Str);
+
+                    let resultNum, resultDen;
+
+                    if (op === '+')      { resultNum = n1 * d2 + n2 * d1; resultDen = d1 * d2; }
+                    else if (op === '-') { resultNum = n1 * d2 - n2 * d1; resultDen = d1 * d2; }
+                    else if (op === '*') { resultNum = n1 * n2;           resultDen = d1 * d2; }
+                    else if (op === '/') { resultNum = n1 * d2;           resultDen = d1 * n2; }
+                    else throw new Error("Invalid operation");
+
+                    const [num, den] = simplify(resultNum, resultDen);
+                    display = formatFraction(num, den);
+                }
+
+                resultDiv.innerHTML = `Result: ${display}`;
+            } catch (err) {
+                resultDiv.innerHTML = `Error: ${err.message}`;
+                resultDiv.style.color = 'red';
+            }
+        }
+
+        // Nice display: 5/1 → 5, 0/1 → 0, otherwise num/den
+        function formatFraction(num, den) {
+            if (den === 1) return num.toString();
+            if (num === 0) return "0";
+            return `${num}/${den}`;
+        }
+
+        // Run toggle once on load (sets initial state)
+        toggleMode();
+    </script>
+</body>
+</html>
